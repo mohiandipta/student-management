@@ -10,6 +10,20 @@ const resultResolvers = {
         createResult: async (_, { studentId, courseId, grade }) => {
             return await Result.create({ grade, StudentId: studentId, CourseId: courseId });
         },
+        updateResult: async (_, { id, grade, studentId, courseId }) => {
+
+            const result = await Result.findByPk(id);
+            if (!result) {
+                throw new Error("Result not found");
+            }
+
+            if (grade) result.grade = grade;
+            if (studentId) result.StudentId = studentId;
+            if (courseId) result.CourseId = courseId;
+
+            await result.save();
+            return result;
+        }
     },
 };
 

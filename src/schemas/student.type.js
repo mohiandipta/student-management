@@ -19,5 +19,6 @@ module.exports = gql`
 
     extend type Mutation {
         createStudent(name: String!, instituteId: ID!): Student
+        updateStudent(id: ID!, name: String!, instituteId: ID!): Student
     }
 `;

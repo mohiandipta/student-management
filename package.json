@@ -1,7 +1,7 @@
 {
   "name": "student-management",
   "version": "1.0.0",
-  "description": "",
+  "description": "assesment for Gain Solution Ltd",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {

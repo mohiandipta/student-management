@@ -19,6 +19,23 @@ const userResolvers = {
                 throw new Error('Invalid credentials');
             }
             return jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        },
+        
+        updateUser: async (_, { id, username, email, password }) => {
+            const user = await User.findByPk(id);
+            if (!user) {
+                throw new Error("User not found");
+            }
+
+            if (username) user.username = username;
+            if (email) user.email = email;
+            if (password) {
+                const hashedPassword = await bcrypt.hash(password, 10);
+                user.password = hashedPassword;
+            }
+
+            await user.save();
+            return user;
         }
     }
 };
