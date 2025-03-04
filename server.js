@@ -1,6 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const sequelize = require('./src/config/database');
+const sequelize = require('./src/database/database');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 const typeDefs = require('./src/schemas/schema');
 const resolvers = require('./src/resolvers');

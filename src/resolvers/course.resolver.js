@@ -9,18 +9,28 @@ const courseResolvers = {
         createCourse: async (_, { title, instituteId }) => {
             return await Course.create({ title, InstituteId: instituteId });
         },
+
         updateCourse: async (_, { id, title, instituteId }) => {
             const course = await Course.findByPk(id);
             if (!course) {
                 throw new Error("Course not found");
             }
-            
+
             if (title) course.title = title;
             if (instituteId) course.InstituteId = instituteId;
 
             await course.save();
             return course;
-        }
+        },
+
+        deleteCourse: async (_, { id }) => {
+            const course = await Course.findByPk(id);
+            if (!course) {
+                throw new Error("Course not found");
+            }
+            await course.destroy();
+            return "Course deleted successfully";
+        },
     },
 };
 

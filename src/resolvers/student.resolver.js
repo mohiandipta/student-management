@@ -9,8 +9,8 @@ const studentResolvers = {
         createStudent: async (_, { name, instituteId }) => {
             return await Student.create({ name, InstituteId: instituteId });
         },
-        updateStudent: async (_, { id, name, instituteId }) => {
 
+        updateStudent: async (_, { id, name, instituteId }) => {
             const student = await Student.findByPk(id);
             if (!student) {
                 throw new Error("Student not found");
@@ -21,7 +21,16 @@ const studentResolvers = {
 
             await student.save();
             return student;
-        }
+        },
+
+        deleteStudent: async (_, { id }) => {
+            const student = await Student.findByPk(id);
+            if (!student) {
+                throw new Error("Student not found");
+            }
+            await student.destroy();
+            return "Student deleted successfully";
+        },
     },
 };
 

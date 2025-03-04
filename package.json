@@ -6,12 +6,15 @@
   "type": "commonjs",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed-up": "npx sequelize-cli db:seed:all",
+    "seed-down": "npx sequelize-cli db:seed:undo:all"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^9.5.1",
     "@graphql-tools/schema": "^10.0.21",
     "apollo-server-express": "^3.13.0",
     "bcrypt": "^5.1.1",

@@ -10,8 +10,8 @@ const resultResolvers = {
         createResult: async (_, { studentId, courseId, grade }) => {
             return await Result.create({ grade, StudentId: studentId, CourseId: courseId });
         },
-        updateResult: async (_, { id, grade, studentId, courseId }) => {
 
+        updateResult: async (_, { id, grade, studentId, courseId }) => {
             const result = await Result.findByPk(id);
             if (!result) {
                 throw new Error("Result not found");
@@ -23,7 +23,16 @@ const resultResolvers = {
 
             await result.save();
             return result;
-        }
+        },
+
+        deleteResult: async (_, { id }) => {
+            const result = await Result.findByPk(id);
+            if (!result) {
+                throw new Error("Result not found");
+            }
+            await result.destroy();
+            return "Result deleted successfully";
+        },
     },
 };
 
