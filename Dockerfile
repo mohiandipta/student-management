@@ -13,10 +13,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-RUN npm run build
-
 # Expose the port that your NestJS app is running on
 EXPOSE $SERVER_PORT
 
 # Command to run the application
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
