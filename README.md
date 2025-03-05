@@ -1,8 +1,5 @@
 # Student Management System
 
-## Overview
-The Student Management System is designed to efficiently manage student records, course enrollments, and academic results. The system supports authentication, data indexing for performance, and GraphQL queries/mutations for seamless interaction.
-
 ## Features
 - Manage Institutes, Students, Courses, and Results.
 - User authentication with JWT.
@@ -10,7 +7,7 @@ The Student Management System is designed to efficiently manage student records,
 - GraphQL-based API for efficient data retrieval.
 
 ## Technologies Used
-- **Backend:** Node.js, NestJS
+- **Backend:** Node.js
 - **Database:** PostgreSQL, Sequelize ORM
 - **Authentication:** JWT (JSON Web Token)
 - **API:** GraphQL
@@ -36,13 +33,26 @@ Ensure you have the following installed:
 3. Configure environment variables:
    Create a `.env` file and configure the database connection:
    ```env
-   DATABASE_URL=postgres://user:password@localhost:5432/student_db
-   JWT_SECRET=your_secret_key
+   # Database configuration
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_NAME=institute_management
+   DB_USER=postgres
+   DB_PASSWORD=postgres
+   
+   # Server configuration
+   SERVER_PORT=4000
+   
+   # JWT Secret
+   JWT_SECRET=your_jwt_secret_key_should_be_long_and_complex
+   JWT_EXPIRES_IN=1d
    ```
 4. Run database migrations and seed data:
    ```bash
    npx sequelize-cli db:migrate
-   npx sequelize-cli db:seed:all
+   npx sequelize-cli db:seed:all or npm run seed-up
+
+   For seed down ---> npm run seed-down
    ```
 5. Start the server:
    ```bash
@@ -107,13 +117,4 @@ CREATE INDEX idx_courses_institute ON Courses(instituteId);
 CREATE INDEX idx_results_student ON Results(studentId);
 CREATE INDEX idx_results_course ON Results(courseId);
 ```
-
-## License
-This project is licensed under the MIT License.
-
-## Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
-
-## Contact
-For any inquiries, reach out to [your.email@example.com].
 
