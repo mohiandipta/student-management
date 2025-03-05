@@ -1,10 +1,10 @@
-const { Institute } = require('../src/models/institute.model');
+const Institute = require('../src/models/institute.model');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     // First, get all institute IDs
     const institutes = await Institute.findAll({
-      attributes: ['id']
+      attributes: ['id'], // Only fetch the id field
     });
 
     if (institutes.length === 0) {
@@ -94,10 +94,10 @@ module.exports = {
       'Unsupervised Learning Techniques',
       'Version Control and Git Mastery',
       'Web Scraping and Data Extraction',
-      'eXtreme Programming Practices'
+      'eXtreme Programming Practices',
     ];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100000; i++) {
       const courseName = courseNames[Math.floor(Math.random() * courseNames.length)];
       const instituteId = instituteIds[Math.floor(Math.random() * instituteIds.length)];
 

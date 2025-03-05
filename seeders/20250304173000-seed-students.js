@@ -1,15 +1,26 @@
-const faker = require('@faker-js/faker');
-const { Student } = require('../models');
+const { faker } = require('@faker-js/faker');
+const Institute = require('../src/models/institute.model');
+
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    const institutes = await Institute.findAll({
+      attributes: ['id'], // Only fetch the id field
+    });
+
+    if (institutes.length === 0) {
+      throw new Error('No institutes found. Please seed institutes first.');
+    }
+
+    const instituteIds = institutes.map(institute => institute.id);
+
     const students = [];
     const batchSize = 1000;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100000; i++) {
       students.push({
-        name: faker.name.findName(),
-        InstituteId: faker.datatype.number({ min: 1, max: 100000 }), // Linking to an institute (ensure institutes exist)
+        name: faker.person.fullName(),
+        instituteId: instituteIds[Math.floor(Math.random() * instituteIds.length)],
         createdAt: new Date(),
         updatedAt: new Date(),
       });
