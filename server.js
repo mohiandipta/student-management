@@ -11,6 +11,21 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
 const server = new ApolloServer({ 
     schema,
+    context: ({ req }) => {
+        if (!req) return {};
+
+        // Extract operation name from request
+        const operationName = req.body.operationName;
+
+        // Skip authentication for the register mutation
+        if (operationName === "register") {
+            return {};
+        }
+
+        // Authenticate other requests
+        const user = authenticate(req);
+        return { user };
+    }
 });
 
 server.start().then(() => {

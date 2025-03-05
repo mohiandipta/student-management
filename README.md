@@ -6,6 +6,7 @@
 - Optimized database queries using indexes.
 - GraphQL-based API for efficient data retrieval.
 - ER Diagram also provided in root path
+- Commitizen added
 
 ## Technologies Used
 - **Backend:** Node.js, Express.js

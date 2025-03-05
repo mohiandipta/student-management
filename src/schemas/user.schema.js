@@ -6,6 +6,7 @@ module.exports = gql`
     id: ID!
     username: String!
     email: String!
+    password: String
   }
 
   extend type Query {
