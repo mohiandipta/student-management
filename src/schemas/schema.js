@@ -1,9 +1,10 @@
 const { gql } = require('apollo-server-express');
-const userTypeDefs = require('./user.type'); // Include user typeDefs
-const instituteTypeDefs = require('./institute.type');
-const studentTypeDefs = require('./student.type');
-const courseTypeDefs = require('./course.type');
-const resultTypeDefs = require('./result.type');
+const userTypeDefs = require('./user.schema'); // Include user typeDefs
+const instituteTypeDefs = require('./institute.schema');
+const studentTypeDefs = require('./student.schema');
+const courseTypeDefs = require('./course.schema');
+const resultTypeDefs = require('./result.schema');
+const authTypeDefs = require('./auth.schema');
 
 const baseTypeDefs = gql`
     type Query
@@ -17,6 +18,7 @@ const typeDefs = gql`
     ${studentTypeDefs}
     ${courseTypeDefs}
     ${resultTypeDefs}
+    ${authTypeDefs}
 `;
 
 module.exports = typeDefs;

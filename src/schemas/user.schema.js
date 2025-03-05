@@ -16,8 +16,5 @@ module.exports = gql`
     createUser(username: String!, email: String!): User
     updateUser(id: ID!, username: String, password: String): User
     deleteUser(id: ID!): String
-
-    register(username: String!, password: String!): String
-    login(username: String!, password: String!): String
   }
 `;

@@ -1,4 +1,3 @@
-const { faker } = require('@faker-js/faker');
 const { Institute } = require('../src/models/institute.model');
 
 module.exports = {
