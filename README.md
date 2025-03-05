@@ -9,7 +9,6 @@
 - Commitizen added
 
 - Deployed on AWS EC2 instance using terraform and docker
-  Clone the repository:
    ```bash
    http://3.147.6.58:4000/graphql
    ```
