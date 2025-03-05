@@ -19,7 +19,7 @@ module.exports = gql`
   }
 
   extend type Query {
-    results: [Result]
+    results(limit: Int, offset: Int): [Result]
     resultsByInstitute(instituteId: ID!): InstituteResults
   }
 

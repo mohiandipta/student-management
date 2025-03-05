@@ -4,7 +4,8 @@ const Course = require('../models/course.model');
 
 const resultResolvers = {
     Query: {
-        results: async () => await Result.findAll({ include: [Student, Course] }),
+        results: async (_, { limit = 10, offset = 0 }) => 
+            await Result.findAll({ include: [Student, Course], limit, offset }),
     },
     Mutation: {
         createResult: async (_, { studentId, courseId, grade }) => {

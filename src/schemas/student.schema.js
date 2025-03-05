@@ -13,7 +13,7 @@ module.exports = gql`
     }
 
     extend type Query {
-        students: [Student]
+        students(limit: Int, offset: Int): [Student]
         topRangkingStudents(limit:Int!): [RankedStudent]!
     }
 

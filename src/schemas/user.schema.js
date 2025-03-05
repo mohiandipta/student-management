@@ -9,7 +9,7 @@ module.exports = gql`
   }
 
   extend type Query {
-    users: [User]
+    users(limit: Int, offset: Int): [User]
   }
 
   extend type Mutation {

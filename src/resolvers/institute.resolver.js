@@ -2,7 +2,8 @@ const Institute = require('../models/institute.model');
 
 const instituteResolvers = {
     Query: {
-        institutes: async () => await Institute.findAll(),
+        institutes: async (_, { limit = 10, offset = 0 }) => 
+            await Institute.findAll({ limit, offset }),
     },
     Mutation: {
         createInstitute: async (_, { name }) => {

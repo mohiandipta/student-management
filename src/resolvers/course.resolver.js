@@ -3,7 +3,8 @@ const Institute = require('../models/institute.model');
 
 const courseResolvers = {
     Query: {
-        courses: async () => await Course.findAll({ include: Institute }),
+        courses: async (_, { limit = 10, offset = 0 }) => 
+            await Course.findAll({ include: Institute, limit, offset}),
     },
     Mutation: {
         createCourse: async (_, { title, instituteId }) => {

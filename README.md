@@ -5,9 +5,10 @@
 - User authentication with JWT.
 - Optimized database queries using indexes.
 - GraphQL-based API for efficient data retrieval.
+- ER Diagram also provided in root path
 
 ## Technologies Used
-- **Backend:** Node.js
+- **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL, Sequelize ORM
 - **Authentication:** JWT (JSON Web Token)
 - **API:** GraphQL
@@ -57,6 +58,10 @@ Ensure you have the following installed:
 5. Start the server:
    ```bash
    npm run start
+   ```
+6. Hit on the browser at:
+   ```bash
+   http://localhost:4000/graphql
    ```
 
 ## Database Schema

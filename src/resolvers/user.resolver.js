@@ -4,7 +4,8 @@ require('dotenv').config();
 
 const userResolvers = {
     Query: {
-        users: () => User.findAll()
+        users: async (_, { limit = 10, offset = 0 }) => 
+            await User.findAll({ limit, offset })
     },
     Mutation: {        
         updateUser: async (_, { id, username, email, password }) => {

@@ -13,7 +13,7 @@ module.exports = gql`
     }
 
     extend type Query {
-        courses: [Course]
+        courses(limit: Int, offset: Int): [Course]
         topCoursesByYear(year: Int!): [TopCourse!]!
     }
 
