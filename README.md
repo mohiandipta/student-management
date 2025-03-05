@@ -8,12 +8,18 @@
 - ER Diagram also provided in root path
 - Commitizen added
 
+- Deployed on AWS EC2 instance using terraform and docker
+  Clone the repository:
+   ```bash
+   http://3.147.6.58:4000/graphql
+   ```
+
 ## Technologies Used
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL, Sequelize ORM
 - **Authentication:** JWT (JSON Web Token)
-- **API:** GraphQL
-- **Containerization:** Docker (Optional)
+- **API:** GraphQL, Apollo Server
+- **Containerization:** Docker
 
 ## Installation
 ### Prerequisites
@@ -25,8 +31,8 @@ Ensure you have the following installed:
 ### Steps to Set Up the Project
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/student-management-system.git
-   cd student-management-system
+   git clone https://github.com/mohiandipta/student-management.git
+   cd student-management
    ```
 2. Install dependencies:
    ```bash
@@ -97,6 +103,72 @@ query {
   }
 }
 ```
+#### Get all Courses
+```graphql
+query Courses {
+  courses {
+    id
+    title
+  }
+}
+```
+#### Get all ResultsByInstitute
+```graphql
+query ResultsByInstitute($instituteId: ID!) {
+  resultsByInstitute(instituteId: $instituteId) {
+    institute {
+      id
+      name
+    }
+    students {
+      results {
+        id
+        grade
+        course {
+          id
+          title
+        }
+      }
+      student {
+        id
+        name
+      }
+    }
+  }
+}
+```
+#### Get all TopCoursesByYear
+```graphql
+query TopCoursesByYear($year: Int!) {
+  topCoursesByYear(year: $year) {
+    course {
+      id
+      title
+      institute {
+        id
+        name
+      }
+    }
+    enrollmentCount
+  }
+}
+```
+#### Get all TopCoursesByYear
+```graphql
+query TopRangkingStudents($limit: Int!) {
+  topRangkingStudents(limit: $limit) {
+    student {
+      id
+      name
+      institute {
+        id
+        name
+      }
+    }
+    totalMarks
+  }
+}
+```
 
 ### Mutations
 #### Create Institute
@@ -108,10 +180,74 @@ mutation {
   }
 }
 ```
+#### Create Course
+```graphql
+mutation CreateCourse($title: String!, $instituteId: ID!) {
+  createCourse(title: $title, instituteId: $instituteId) {
+    id
+    title
+    institute {
+      id
+      name
+    }
+  }
+}
+```
+#### Create Result
+```graphql
+mutation CreateResult($studentId: ID!, $courseId: ID!, $grade: String!) {
+  createResult(studentId: $studentId, courseId: $courseId, grade: $grade) {
+    id
+    grade
+    student {
+      id
+      name
+      institute {
+        id
+        name
+      }
+    }
+    course {
+      id
+      title
+      institute {
+        id
+        name
+      }
+    }
+  }
+}
+```
+#### Create Student
+```graphql
+mutation CreateStudent($name: String!, $instituteId: ID!) {
+  createStudent(name: $name, instituteId: $instituteId) {
+    id
+    name
+    institute {
+      id
+      name
+    }
+  }
+}
+```
 #### Register User
 ```graphql
 mutation {
   register(username: "admin", email: "admin@example.com", password: "securepassword")
+}
+```
+#### Login User
+```graphql
+mutation Login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    token
+    user {
+      id
+      email
+      username
+    }
+  }
 }
 ```
 
