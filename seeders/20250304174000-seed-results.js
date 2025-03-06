@@ -25,7 +25,7 @@ module.exports = {
     const courseIds = courses.map(course => course.id);
 
     const results = [];
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 100; i++) {
       results.push({
         grade: faker.helpers.arrayElement(['A', 'B', 'C', 'D', 'E', 'F']),
         studentId: studentIds[Math.floor(Math.random() * studentIds.length)],

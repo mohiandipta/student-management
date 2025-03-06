@@ -29,5 +29,7 @@ const Result = sequelize.define("Result", {
 
 Result.belongsTo(Student, { foreignKey: "studentId" });
 Result.belongsTo(Course, { foreignKey: "courseId" });
+Student.hasMany(Result, { foreignKey: 'studentId' });
+Result.belongsTo(Student, { foreignKey: 'studentId' });
 
 module.exports = Result;

@@ -74,7 +74,7 @@ Ensure you have the following installed:
 ### Tables
 - **Institutes** (id, name, createdAt, updatedAt)
 - **Courses** (id, title, instituteId, createdAt, updatedAt)
-- **Students** (id, name, instituteId, createdAt, updatedAt)
+- **Students** (id, name, instituteId, courseId, createdAt, updatedAt)
 - **Results** (id, studentId, courseId, grade, createdAt, updatedAt)
 - **Users** (id, username, email, password, createdAt, updatedAt)
 

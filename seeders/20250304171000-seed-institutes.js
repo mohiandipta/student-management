@@ -5,7 +5,7 @@ module.exports = {
     const institutes = new Set(); // Use a Set to ensure unique names
     const batchSize = 1000;
 
-    while (institutes.size < 100000) {
+    while (institutes.size < 100) {
       // Generate a unique name by adding a random suffix
       const baseName = faker.company.name();
       const uniqueName = `${baseName} University ${Math.floor(Math.random() * 1000)}`;
