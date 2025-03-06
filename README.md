@@ -232,6 +232,8 @@ mutation CreateStudent($name: String!, $instituteId: ID!) {
   }
 }
 ```
+Same approach for update and delete.
+
 #### Register User
 ```graphql
 mutation {
