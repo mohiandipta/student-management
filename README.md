@@ -12,6 +12,7 @@
    ```bash
    http://3.147.6.58:4000/graphql
    ```
+   due to http Network requests from Studio on HTTPS to my EC2 HTTP endpoint are not secure, so it cant show full projects endpoints.
 
 ## Technologies Used
 - **Backend:** Node.js, Express.js
@@ -23,8 +24,8 @@
 ## Installation
 ### Prerequisites
 Ensure you have the following installed:
-- Node.js (>= 16)
-- PostgreSQL (>= 13)
+- Node.js
+- PostgreSQL
 - Docker (optional, for containerized deployment)
 
 ### Steps to Set Up the Project
@@ -69,6 +70,7 @@ Ensure you have the following installed:
    ```bash
    http://localhost:4000/graphql
    ```
+   It will take you to the Apollo Graphql Studio with all the Queries and Mutations and endpoints
 
 ## Database Schema
 ### Tables
