@@ -7,7 +7,7 @@ module.exports = {
     const users = [];
     const batchSize = 1000;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100000; i++) {
       const password = faker.internet.password();  // Generate a random password
       const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
 

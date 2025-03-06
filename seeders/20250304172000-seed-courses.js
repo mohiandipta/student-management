@@ -97,7 +97,7 @@ module.exports = {
       'eXtreme Programming Practices',
     ];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100000; i++) {
       const courseName = courseNames[Math.floor(Math.random() * courseNames.length)];
       const instituteId = instituteIds[Math.floor(Math.random() * instituteIds.length)];
 

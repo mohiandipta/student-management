@@ -28,7 +28,7 @@ module.exports = {
     const students = [];
     const batchSize = 1000;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100000; i++) {
       students.push({
         name: faker.person.fullName(),
         instituteId: instituteIds[Math.floor(Math.random() * instituteIds.length)],
